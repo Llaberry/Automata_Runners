@@ -5,7 +5,7 @@ name: 💳 Get Certs | 🧹 Clean (Automata Hosts) [AM]
 on:
   workflow_dispatch: # Whenever manually run from actions-tab
   schedule:
-    - cron: "15 02 * * *" #( 02:15 AM UTC --> 06:15 AM Morning )
+    - cron: "15 02 * * *" #( 02:15 AM UTC --> 08:00 AM Morning )
 #------------------------------------------------------------------------------------#  
 env:
   # DO NOT MODIFY ANYTHING ELSE
@@ -15,7 +15,7 @@ env:
 jobs:
   Broom:
     runs-on: ubuntu-latest
-    timeout-minutes: 69696969696969  
+    timeout-minutes: 200
     permissions:
       contents: write
       
