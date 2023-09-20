@@ -5,7 +5,7 @@ name: 🛸 HTTPx || 📷 GoWitness (Automata Hosts) [PM]
 on:
   workflow_dispatch: # Whenever manually run from actions-tab
   schedule:
-    - cron: "00 01 * * *" #( 01:00 PM UTC --> 06:45 PM Evening )
+    - cron: "45 10 * * *" #( 10:45 AM UTC --> 04:30 PM Evening )
 #------------------------------------------------------------------------------------#  
 env:
   # DO NOT MODIFY ANYTHING ELSE
@@ -15,7 +15,7 @@ env:
 jobs:
   Shoot:
     runs-on: ubuntu-latest
-    timeout-minutes: 69696969696969  
+    timeout-minutes: 200
     permissions:
       contents: write
       
