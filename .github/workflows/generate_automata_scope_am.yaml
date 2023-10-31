@@ -47,9 +47,17 @@ jobs:
           set -x ; set +e
           #--------------#
           sudo apt update -y
-          sudo apt install coreutils curl dos2unix jq moreutils wget -y
-          # Again just because
-          sudo apt install coreutils curl dos2unix jq moreutils wget -y
+          sudo apt install coreutils curl dos2unix fdupes jq moreutils wget -y
+          pip install ansi2txt
+          # Do again, sometimes fails
+          sudo apt install coreutils curl fdupes dos2unix jq moreutils wget -y
+          pip install ansi2txt
+          # For TG BOT Notifs
+          pip install apprise 
+          pip install apprise 2>/dev/null
+          # For neofetch
+          pip install archey4
+          pip install archey4 2>/dev/null
         continue-on-error: true
 
       - name: Install eget
