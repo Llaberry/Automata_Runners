@@ -1,0 +1,112 @@
+name: PM - ⚓ Generate | Initialize 🔰 (Scope) 🗂️📂
+# This will likely increase as Repo Size gets bigger over time
+#MAX_RUNTIME: 30-45 Mins
+on:
+  workflow_dispatch: # Whenever manually run from actions-tab
+  schedule:
+    - cron: "45 11 * * *" #( 11:45 AM UTC --> 05:30 PM Evening )
+#------------------------------------------------------------------------------------#  
+env:
+  #GITHUB_WORKSPACE: "${{ env.GITHUB_WORKSPACE }}"
+  INVENTORY_REPO_USER: "${{ secrets.INVENTORY_REPO_USER }}"
+  INVENTORY_REPO_TOKEN: "${{ secrets.INVENTORY_REPO_TOKEN }}"
+  RCLONE_CF_R2_PUB: "${{ secrets.RCLONE_CF_R2_PUB }}"    
+#------------------------------------------------------------------------------------#
+jobs:
+  ScopeGen:
+    runs-on: ubuntu-latest
+    #timeout-minutes: 45 # Can't afford to finish the 2000 Minutes quotes    
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Debloat
+        run: |
+          # Presets
+          set -x ; set +e
+          #--------------#
+          bash <(curl -qfsSL "https://raw.githubusercontent.com/Azathothas/Arsenal/main/misc/Github/Runners/Ubuntu/debloat.sh")
+        continue-on-error: true
+    
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          path: main  
+
+      - name: Setup ENV
+        run: |
+          # Presets
+          set -x ; set +e
+          #--------------#
+          #touch "$HOME/.rclone.conf"
+          echo "${{ secrets.RCLONE_CF_R2_PUB }}" > "$HOME/.rclone.conf"
+
+      - name: Install Coreutils
+        run: |
+          # Presets
+          set -x ; set +e
+          #--------------#
+          sudo apt update -y
+          sudo apt install coreutils curl dos2unix jq moreutils wget -y
+          # Again just because
+          sudo apt install coreutils curl dos2unix jq moreutils wget -y
+        continue-on-error: true
+
+      - name: Install eget
+        run: |
+          # Presets
+          set -x ; set +e
+          #--------------#
+          # eget for bins
+          sudo wget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/eget" -O "/usr/local/bin/eget"
+          sudo chmod +xwr "/usr/local/bin/eget"
+        continue-on-error: false
+
+      - name: Install Deps
+        run: |
+          # Presets
+          set -x ; set +e
+          #--------------#
+          #anew
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/anew" --to "/usr/local/bin/anew"
+          #asn
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/asn" --to "/usr/local/bin/asn"
+          #asnmap
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/asnmap" --to "/usr/local/bin/asnmap"
+          #cut-cdn
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/cut-cdn" --to "/usr/local/bin/cut-cdn"          
+          # dirstat-rs for tree
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/ds" --to "/usr/local/bin/ds"          
+          #dnsx
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/dnsx" --to "/usr/local/bin/dnsx"
+          #HTTPx
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/httpx" --to "/usr/local/bin/httpx"
+          #inscope
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/inscope" --to "/usr/local/bin/inscope"
+          #mapcidr
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/mapcidr" --to "/usr/local/bin/mapcidr"
+          #scopegen
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/scopegen" --to "/usr/local/bin/scopegen"
+          #scopeview
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/scopeview" --to "/usr/local/bin/scopeview"
+          #spk
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/spk" --to "/usr/local/bin/spk"
+          #yq
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/yq" --to "/usr/local/bin/yq"
+        continue-on-error: true
+
+      - name: Gen Scope
+        run: |
+          # Presets
+          set -x ; set +e
+          #--------------#
+          # Download
+          curl -qfsSL "https://$INVENTORY_REPO_USER:$INVENTORY_REPO_TOKEN@raw.githubusercontent.com/Azathothas/Inventory/main/.github/scripts/generate_automata_scope.sh" -o "./generate_automata_scope.sh"
+          #Dos2unix
+          dos2unix "./generate_automata_scope.sh"
+          #Chmod
+          sudo chmod +xwr "./generate_automata_scope.sh"
+          # Run
+          # Always run with STD_OUT + STD_IN >/dev/null
+          bash "./generate_automata_scope.sh" >/dev/null 2>&1
+        continue-on-error: true
