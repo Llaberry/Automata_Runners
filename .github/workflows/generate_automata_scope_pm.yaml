@@ -4,7 +4,7 @@ name: PM - ⚓ Generate | Initialize 🔰 (Scope) 🗂️📂
 on:
   workflow_dispatch: # Whenever manually run from actions-tab
 #  schedule:
-#    - cron: "45 11 * * *" #( 11:45 AM UTC --> 05:30 PM Evening )
+#    - cron: "45 11 * * *" #( 11:45 AM UTC --> 05:30 PM Evening )#
 #------------------------------------------------------------------------------------#  
 env:
   #GITHUB_WORKSPACE: "${{ env.GITHUB_WORKSPACE }}"
