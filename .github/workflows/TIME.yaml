@@ -3,7 +3,8 @@ name: ⌚ TIME
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 23 * * *" #( 11:15 PM UTC 05:00 AM Morning )
+    #- cron: "15 23 * * *" #( 11:15 PM UTC 05:00 AM Morning )
+    - cron: "0 */6 * * *" #Every 6 hrs 
 #------------------------------------------------------------------------------------#
 jobs:
   Initialize:
@@ -24,7 +25,7 @@ jobs:
           NEPALI_TIME=$(TZ='Asia/Kathmandu' date +'%Y-%m-%d (%I:%M:%S %p)')
           echo "NEPALI_TIME=$NEPALI_TIME" >> $GITHUB_ENV
           #
-          echo "${{ env.NEPALI_TIME }} ⌚" > "$GITHUB_WORKSPACE/main/.github/TIME"
+          echo "$(TZ='Asia/Kathmandu' date +'%Y-%m-%d (%I:%M:%S %p)') ⌚" > "$GITHUB_WORKSPACE/main/.github/TIME"
         continue-on-error: true
 
       - uses: stefanzweifel/git-auto-commit-action@v5
