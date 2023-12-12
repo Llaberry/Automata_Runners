@@ -15,7 +15,7 @@ env:
 jobs:
   Broom:
     runs-on: ubuntu-latest
-    timeout-minutes: 70
+    timeout-minutes: 120
     permissions:
       contents: write
       
