@@ -1,4 +1,4 @@
-name: AM - ⚓ Generate | Initialize 🔰 (Scope) 🗂️📂
+name: AM - ⚓ Generate | Initialize | Filter 🔰 (Scope) 🗂️📂
 # This will likely increase as Repo Size gets bigger over time
 #MAX_RUNTIME: 30-45 Mins
 on:
@@ -95,6 +95,10 @@ jobs:
           sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/mapcidr" --to "/usr/local/bin/mapcidr"
           #rclone
           sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/rclone" --to "/usr/local/bin/rclone"
+          #ripgrep
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/ripgrep" --to "/usr/local/bin/ripgrep"
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/rg" --to "/usr/local/bin/rg"
+          sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/rga" --to "/usr/local/bin/rga"
           #scopegen
           sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/scopegen" --to "/usr/local/bin/scopegen"
           #scopeview
@@ -107,7 +111,7 @@ jobs:
           sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/yq" --to "/usr/local/bin/yq"
         continue-on-error: true
 
-      - name: Gen Scope
+      - name: Gen|Filter Scope
         run: |
           # Presets
           set -x ; set +e
