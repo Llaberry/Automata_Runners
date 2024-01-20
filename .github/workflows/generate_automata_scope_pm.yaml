@@ -58,7 +58,7 @@ jobs:
           set -x ; set +e
           #--------------#
           # eget for bins
-          sudo wget "https://bin.prashansa.com.np/x86_64_Linux/eget" -O "/usr/local/bin/eget"
+          sudo wget "https://bin.ajam.dev/x86_64_Linux/eget" -O "/usr/local/bin/eget"
           sudo chmod +xwr "/usr/local/bin/eget"
         continue-on-error: false
 
@@ -68,35 +68,35 @@ jobs:
           set -x ; set +e
           #--------------#
           #anew
-          sudo eget "https://bin.prashansa.com.np/x86_64_Linux/anew" --to "/usr/local/bin/anew"
+          sudo eget "https://bin.ajam.dev/x86_64_Linux/anew" --to "/usr/local/bin/anew"
           #asn
-          sudo eget "https://bin.prashansa.com.np/x86_64_Linux/asn" --to "/usr/local/bin/asn"
+          sudo eget "https://bin.ajam.dev/x86_64_Linux/asn" --to "/usr/local/bin/asn"
           #asnmap
-          sudo eget "https://bin.prashansa.com.np/x86_64_Linux/asnmap" --to "/usr/local/bin/asnmap"
+          sudo eget "https://bin.ajam.dev/x86_64_Linux/asnmap" --to "/usr/local/bin/asnmap"
           #cut-cdn
-          sudo eget "https://bin.prashansa.com.np/x86_64_Linux/cut-cdn" --to "/usr/local/bin/cut-cdn"          
+          sudo eget "https://bin.ajam.dev/x86_64_Linux/cut-cdn" --to "/usr/local/bin/cut-cdn"          
           # dirstat-rs for tree
-          sudo eget "https://bin.prashansa.com.np/x86_64_Linux/ds" --to "/usr/local/bin/ds"          
+          sudo eget "https://bin.ajam.dev/x86_64_Linux/ds" --to "/usr/local/bin/ds"          
           #dnsx
-          sudo eget "https://bin.prashansa.com.np/x86_64_Linux/dnsx" --to "/usr/local/bin/dnsx"
+          sudo eget "https://bin.ajam.dev/x86_64_Linux/dnsx" --to "/usr/local/bin/dnsx"
           #HTTPx
-          sudo eget "https://bin.prashansa.com.np/x86_64_Linux/httpx" --to "/usr/local/bin/httpx"
+          sudo eget "https://bin.ajam.dev/x86_64_Linux/httpx" --to "/usr/local/bin/httpx"
           #inscope
-          sudo eget "https://bin.prashansa.com.np/x86_64_Linux/inscope" --to "/usr/local/bin/inscope"
+          sudo eget "https://bin.ajam.dev/x86_64_Linux/inscope" --to "/usr/local/bin/inscope"
           #mapcidr
-          sudo eget "https://bin.prashansa.com.np/x86_64_Linux/mapcidr" --to "/usr/local/bin/mapcidr"
+          sudo eget "https://bin.ajam.dev/x86_64_Linux/mapcidr" --to "/usr/local/bin/mapcidr"
           #rclone
-          sudo eget "https://bin.prashansa.com.np/x86_64_Linux/rclone" --to "/usr/local/bin/rclone"
+          sudo eget "https://bin.ajam.dev/x86_64_Linux/rclone" --to "/usr/local/bin/rclone"
           #scopegen
-          sudo eget "https://bin.prashansa.com.np/x86_64_Linux/scopegen" --to "/usr/local/bin/scopegen"
+          sudo eget "https://bin.ajam.dev/x86_64_Linux/scopegen" --to "/usr/local/bin/scopegen"
           #scopeview
-          sudo eget "https://bin.prashansa.com.np/x86_64_Linux/scopeview" --to "/usr/local/bin/scopeview"
+          sudo eget "https://bin.ajam.dev/x86_64_Linux/scopeview" --to "/usr/local/bin/scopeview"
           #spk
-          sudo eget "https://bin.prashansa.com.np/x86_64_Linux/spk" --to "/usr/local/bin/spk"
+          sudo eget "https://bin.ajam.dev/x86_64_Linux/spk" --to "/usr/local/bin/spk"
           #subxtract
           sudo curl -qfsSL "https://raw.githubusercontent.com/Azathothas/Arsenal/main/subxtract/subxtract.sh" -o "/usr/local/bin/subxtract" && sudo chmod +xwr "/usr/local/bin/subxtract"
           #yq
-          sudo eget "https://bin.prashansa.com.np/x86_64_Linux/yq" --to "/usr/local/bin/yq"
+          sudo eget "https://bin.ajam.dev/x86_64_Linux/yq" --to "/usr/local/bin/yq"
         continue-on-error: true
 
       - name: Gen Scope
