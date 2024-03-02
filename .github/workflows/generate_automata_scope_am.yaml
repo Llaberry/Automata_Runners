@@ -32,6 +32,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: main  
+          filter: "blob:none" #https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/
 
       - name: Setup ENV
         run: |
@@ -40,6 +41,7 @@ jobs:
           #--------------#
           #touch "$HOME/.rclone.conf"
           echo "${{ secrets.RCLONE_CF_R2_PUB }}" > "$HOME/.rclone.conf"
+        continue-on-error: true
 
       - name: Install Coreutils
         run: |
@@ -66,7 +68,7 @@ jobs:
           set -x ; set +e
           #--------------#
           # eget for bins
-          sudo wget "https://bin.ajam.dev/x86_64_Linux/eget" -O "/usr/local/bin/eget"
+          sudo curl -qfsSL "https://bin.ajam.dev/x86_64_Linux/eget" -o "/usr/local/bin/eget"
           sudo chmod +xwr "/usr/local/bin/eget"
         continue-on-error: false
 
