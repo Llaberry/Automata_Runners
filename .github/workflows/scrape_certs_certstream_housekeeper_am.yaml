@@ -15,7 +15,7 @@ env:
 jobs:
   Broom:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 200
     permissions:
       contents: write
       
@@ -96,7 +96,7 @@ jobs:
           sudo chmod +xwr "./scrape_certs_certstream_housekeeper.sh"
           # Run
           # Always run with STD_OUT + STD_IN >/dev/null
-          #bash "./scrape_certs_certstream_housekeeper.sh" >/dev/null 2>&1
+          bash "./scrape_certs_certstream_housekeeper.sh" >/dev/null 2>&1
           #Debug (DANGEROUS)
-          bash "./scrape_certs_certstream_housekeeper.sh"
+          #bash "./scrape_certs_certstream_housekeeper.sh"
         continue-on-error: true
